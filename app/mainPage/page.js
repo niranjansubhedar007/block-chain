@@ -47,7 +47,6 @@ const Mainpage = () => {
           </p>
 
           <button
-            onClick={handleColorChange}
             className="text-white  ml-4 align-middle px-2 justify-center  md:mt-1 mt-0 lg:pt-0  text-center border flex lg:text-base md:text-base text-base"
             style={{
               borderColor: color,
@@ -56,33 +55,9 @@ const Mainpage = () => {
             }}
           >
             <FontAwesomeIcon icon={faArrowsRotate} className="mr-2 mt-1 w-4 h-4" />
-            Change Color
+            Refresh
           </button>
-          <input
-            type="color"
-            value={inputColor}
-            onChange={(e) => setInputColor(e.target.value)}
-            className="ml-4 mt-1"
-          />
-
-          <button
-          onClick={handleColorChangeSecond}
-          className="text-white  ml-4 align-middle px-2 justify-center  md:mt-1 mt-0 lg:pt-0  text-center border flex lg:text-base md:text-base text-base"
-          style={{
-            borderColor: colorSecond,
-            borderWidth: "1px",
-            backgroundColor: `${colorSecond}70`,
-          }}
-        >
-          <FontAwesomeIcon icon={faArrowsRotate} className="mr-2 mt-1 w-4 h-4" />
-         Second Change Color
-        </button>
-        <input
-          type="color"
-          value={inputColorSecond}
-          onChange={(e) => setInputColorSecond(e.target.value)}
-          className="ml-4 mt-1"
-        />
+  
         </div>
 
         <div className="w-full grid lg:grid-cols-4 grid-cols-1 md:grid-cols-2 gap-5 mt-4">
@@ -311,12 +286,10 @@ const Mainpage = () => {
   );
 };
 
-export default Mainpage;
-
-
-
-
-
-
-
-
+export default function Page() {
+  return (
+    <ColorProvider>
+      <Mainpage />
+    </ColorProvider>
+  );
+}
