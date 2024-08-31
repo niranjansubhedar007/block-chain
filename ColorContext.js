@@ -6,17 +6,31 @@ const ColorContext = createContext();
 
 // Create a provider component
 export const ColorProvider = ({ children }) => {
-  // Load initial colors from localStorage or use default values
-  const [color, setColor] = useState(() => localStorage.getItem('selectedColor') || "#00f500");
-  const [colorSecond, setColorSecond] = useState(() => localStorage.getItem('selectedColorSecond') || "#0195d7");
+  const [color, setColor] = useState(null); // Initialize with null
+  const [colorSecond, setColorSecond] = useState(null); // Initialize with null
 
-  // Save colors to localStorage whenever they change
   useEffect(() => {
-    localStorage.setItem('selectedColor', color);
+    // Check if window is defined (browser environment)
+    if (typeof window !== "undefined") {
+      const storedColor = localStorage.getItem('selectedColor');
+      const storedColorSecond = localStorage.getItem('selectedColorSecond');
+
+      // If stored values are found, update the state
+      setColor(storedColor || "#00f500"); // Use stored value or default
+      setColorSecond(storedColorSecond || "#0195d7"); // Use stored value or default
+    }
+  }, []);
+
+  useEffect(() => {
+    if (color !== null) {
+      localStorage.setItem('selectedColor', color);
+    }
   }, [color]);
 
   useEffect(() => {
-    localStorage.setItem('selectedColorSecond', colorSecond);
+    if (colorSecond !== null) {
+      localStorage.setItem('selectedColorSecond', colorSecond);
+    }
   }, [colorSecond]);
 
   return (

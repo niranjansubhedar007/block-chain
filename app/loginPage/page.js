@@ -20,8 +20,8 @@ const Loginpage = () => {
   const { colorSecond, setColorSecond } = useColor();
   const [message, setMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [inputColor, setInputColor] = useState(color);
-  const [inputColorSecond, setInputColorSecond] = useState(colorSecond);
+  const [inputColor, setInputColor] = useState(color || "#000000"); // Default color if undefined
+  const [inputColorSecond, setInputColorSecond] = useState(colorSecond || "#000000"); // Default color if undefined
   const router = useRouter();
 
   useEffect(() => {
@@ -114,7 +114,7 @@ const Loginpage = () => {
                     className="bg-gray-200 focus:outline-none focus:shadow-outline border rounded py-1 px-4 block w-full appearance-none pr-10 text-sm md:text-base"
                     style={{ borderColor: colorSecond }}
                     type="text"
-                    value={username}
+                    value={username || ""} // Default to empty string
                     placeholder="Enter Username"
                     onChange={(e) => setUsername(e.target.value)}
                   />
@@ -134,7 +134,7 @@ const Loginpage = () => {
                     className="bg-gray-200 focus:outline-none focus:shadow-outline border rounded py-1 px-4 block w-full appearance-none pr-10 text-sm md:text-base"
                     style={{ borderColor: colorSecond }}
                     type={showPassword ? "text" : "password"}
-                    value={password}
+                    value={password || ""} // Default to empty string
                     placeholder="Enter Password"
                     onChange={(e) => setPassword(e.target.value)}
                   />
@@ -189,10 +189,7 @@ const Loginpage = () => {
           </div>
         </div>
       </div>
-      <div className="flex w-full">
-        <p className="text-white lg:text-2xl md:text-xl text-base">
-          PLATFORM STATS
-        </p>
+      <div className="flex w-full justify-center">
         <button
           onClick={handleColorChange}
           className="text-white ml-4 align-middle px-2 justify-center md:mt-1 mt-0 lg:pt-0 text-center border flex lg:text-base md:text-base text-base"
@@ -206,11 +203,11 @@ const Loginpage = () => {
             icon={faArrowsRotate}
             className="mr-2 mt-1 w-4 h-4"
           />
-          Change Color
+          1
         </button>
         <input
           type="color"
-          value={inputColor}
+          value={inputColor || "#000000"} // Default to black
           onChange={(e) => setInputColor(e.target.value)}
           className="ml-4 mt-1"
         />
@@ -227,8 +224,9 @@ const Loginpage = () => {
             icon={faArrowsRotate}
             className="mr-2 mt-1 w-4 h-4"
           />
-          Second Change Color
+         2
         </button>
+
         <input
           type="color"
           value={inputColorSecond}
