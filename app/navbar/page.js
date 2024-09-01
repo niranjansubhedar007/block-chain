@@ -8,9 +8,8 @@ import { useEffect, useState } from "react";
 
 
 const Navbar = () => {
-
-  const [color, setColor] = useState('#000000');
-  const [colorSecond, setColorSecond] = useState('#ffffff');
+  const [color, setColor] = useState('#00f500');
+  const [colorSecond, setColorSecond] = useState('#0195d7');
 
   useEffect(() => {
     // Load colors from localStorage

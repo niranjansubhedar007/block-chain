@@ -48,8 +48,8 @@ import React, { createContext, useState, useContext } from 'react';
 const ColorContext = createContext();
 
 export const ColorProvider = ({ children }) => {
-  const [color, setColor] = useState('#000000');
-  const [colorSecond, setColorSecond] = useState('#ffffff');
+  const [color, setColor] = useState('#00f500');
+  const [colorSecond, setColorSecond] = useState('#0195d7');
 
   return (
     <ColorContext.Provider value={{ color, setColor, colorSecond, setColorSecond }}>

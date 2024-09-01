@@ -14,16 +14,16 @@ import Link from "next/link";
 import { useColor } from "@/ColorContext";
 
 const Loginpage = () => {
-  const { color = '#000000', setColor } = useColor() || {};
-const { colorSecond = '#ffffff', setColorSecond } = useColor() || {};
+  const { color = '#00f500', setColor } = useColor() || {};
+const { colorSecond = '#0195d7', setColorSecond } = useColor() || {};
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const [message, setMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [inputColor, setInputColor] = useState(color || "#000000"); // Default color if undefined
-  const [inputColorSecond, setInputColorSecond] = useState(colorSecond || "#000000"); // Default color if undefined
+  const [inputColor, setInputColor] = useState(color || "#00f500"); // Default color if undefined
+  const [inputColorSecond, setInputColorSecond] = useState(colorSecond || "#0195d7"); // Default color if undefined
   const router = useRouter();
 
   useEffect(() => {
