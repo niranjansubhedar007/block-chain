@@ -14,10 +14,12 @@ import Link from "next/link";
 import { useColor } from "@/ColorContext";
 
 const Loginpage = () => {
+  const { color = '#000000', setColor } = useColor() || {};
+const { colorSecond = '#ffffff', setColorSecond } = useColor() || {};
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { color, setColor } = useColor();
-  const { colorSecond, setColorSecond } = useColor();
+
   const [message, setMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [inputColor, setInputColor] = useState(color || "#000000"); // Default color if undefined

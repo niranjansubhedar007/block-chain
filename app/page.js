@@ -13,8 +13,7 @@ import React from "react";
 import { ColorProvider } from "@/ColorContext";
 
 import Loginpage from "./loginPage/page";
-import Mainpage from "./mainPage/page";
-import Navbar from "./navbar/page";
+
 
 const App = () => {
   return (

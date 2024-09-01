@@ -15,24 +15,17 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../navbar/page";
 
 const Mainpage = () => {
-  const { color, setColor } = useColor();
-  const [inputColor, setInputColor] = useState(color);
+  const [color, setColor] = useState('#000000');
+  const [colorSecond, setColorSecond] = useState('#ffffff');
 
-  const { colorSecond, setColorSecond } = useColor();
-  const [inputColorSecond, setInputColorSecond] = useState(colorSecond);
-
-
-  const handleColorChange = () => {
-    setColor(inputColor);
-  };
-
-  const handleColorChangeSecond = () => {
-    setColorSecond(inputColorSecond);
-  };
   useEffect(() => {
-    setInputColor(color);
-    setInputColorSecond(colorSecond);
-  }, [color, colorSecond]);
+    // Load colors from localStorage
+    const storedColor = localStorage.getItem("selectedColor");
+    const storedColorSecond = localStorage.getItem("selectedColorSecond");
+
+    if (storedColor) setColor(storedColor);
+    if (storedColorSecond) setColorSecond(storedColorSecond);
+  }, []);
 
   return (
     <>
@@ -286,10 +279,4 @@ const Mainpage = () => {
   );
 };
 
-export default function Page() {
-  return (
-    <ColorProvider>
-      <Mainpage />
-    </ColorProvider>
-  );
-}
+export default Mainpage;

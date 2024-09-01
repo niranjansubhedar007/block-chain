@@ -4,12 +4,22 @@
 import { useColor } from "@/ColorContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 
 const Navbar = () => {
-  const { color } = useColor();
-  const { colorSecond } = useColor();
 
+  const [color, setColor] = useState('#000000');
+  const [colorSecond, setColorSecond] = useState('#ffffff');
+
+  useEffect(() => {
+    // Load colors from localStorage
+    const storedColor = localStorage.getItem("selectedColor");
+    const storedColorSecond = localStorage.getItem("selectedColorSecond");
+
+    if (storedColor) setColor(storedColor);
+    if (storedColorSecond) setColorSecond(storedColorSecond);
+  }, []);
   return (
     <>
       <div className="w-full" style={{ backgroundColor: "#000000" }}>
